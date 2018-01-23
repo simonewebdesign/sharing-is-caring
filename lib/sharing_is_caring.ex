@@ -33,15 +33,13 @@ defmodule SharingIsCaring do
     end)
 
     if rest > 0 do
-      share_rest(ppl, rest)
+      share_rest(ppl, rest, number_of_people)
     else
       ppl
     end
   end
 
-  defp share_rest(people, amount) do
-    length = Enum.count(people)
-
+  defp share_rest(people, amount, length) do
     {_index, ppl} = Enum.reduce(1..amount, {0, people}, fn
       _i, {idx, acc} when idx == length ->
         {0, acc}
